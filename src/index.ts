@@ -3,6 +3,7 @@ import { ApolloServer } from "apollo-server-express"
 import { resolvers } from "./resolvers"
 import { typeDefs } from "./typeDefs"
 
+const PORT = process.env.PORT || 7000;
 
 (async () => {
     try {
@@ -14,8 +15,8 @@ import { typeDefs } from "./typeDefs"
         await server.start()
         server.applyMiddleware({ app })
 
-        app.listen({ port: 7000 }, () => {
-            console.log(`Server running at http://localhost:7000${server.graphqlPath}`)
+        app.listen({ port: PORT }, () => {
+            console.log(`Server running at http://localhost:${PORT}${server.graphqlPath}`)
 
         })
     } catch (error) {
